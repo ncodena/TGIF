@@ -2,8 +2,6 @@ const members = data.results[0].members;
 
 // GLANCE TABLE
 
-
-
 function getNumberMembers() {
 
     let democrats = 0;
@@ -122,16 +120,28 @@ engagementTable("least-table",leastEngagedMembers);
 engagementTable ("most-table", mostEngagedMembers);
 
 
-// // PARTY LOYALTY TABLE
+// PARTY LOYALTY TABLE
 
+
+// PARTY LOYALTY
+
+// function getPartyVotes (allMembers){
+//     let partyVotes = []
+
+//     for (let i = 0;  i < allMembers.length; i++) {
+//     let gettingVotes = (members[i].votes_with_party_pct / 100) * members[i].total_votes;
+//     partyVotes.push(gettingVotes)
+//     }
+//     return partyVotes
+// }
 // const partyVotes = getPartyVotes(members)
-// const dataLoyalty = getLoyalData();
+
+
 // // const leastPMembers = 
 // // const mostPMembers =
 
 
-// engagementTableLoyalty("least-tableLoyalty",leastEngagedMembers);
-// engagementTableLoyalty("most-tableLoyalty",mostEngagedMembers);
+
 
 
 
@@ -147,52 +157,100 @@ engagementTable ("most-table", mostEngagedMembers);
 
 
 
-// // PARTY LOYALTY
 
-// function getPartyVotes (allMembers){
-
-//     let partyVotes = []
-
-//     for (let i = 0;  i < allMembers.length; i++) {
-//     let gettingVotes = (members[i].votes_with_party_pct / 100) * members[i].total_votes;
-//     partyVotes.push(gettingVotes)
-//     }
-//     return partyVotes
-// }
 // console.log("partyVotes: ", partyVotes)
-// function getLoyalData() {
-//     let arrayData = []
+function getLoyaltyData() {
+    let arrayData = []
 
-//     for (let i = 0; i < members.length; i++) {
-//         if (members[i].middle_name == null) {
-//             members[i].middle_name = "";
-//         }
-//         let fullName = members[i].first_name + " " + members[i].middle_name + " " + members[i].last_name;
-//         let partyVotes = partyVotes;
-//         let partyVotesPCT = members[i].votes_with_party_pct;
-//         arrayData.push({fullName, partyVotes, partyVotesPCT})
-//     }
-//     console.log(arrayData)
+    for (let i = 0; i < members.length; i++) {
+        if (members[i].middle_name == null) {
+            members[i].middle_name = "";
+        }
+        let fullName = members[i].first_name + " " + members[i].middle_name + " " + members[i].last_name;
+        let partyVotes = ((members[i].votes_with_party_pct / 100) * members[i].total_votes).toFixed()
+        let partyVotesPCT = members[i].votes_with_party_pct
+        arrayData.push({fullName, partyVotes, partyVotesPCT})
+    }
+    // console.log(arrayData)
     
-//     return arrayData.sort(function (a, b) {
-//         return b.partyVotes - a.partyVotes
-//     })
-// }
+    return arrayData.sort(function (a, b) {
+        return b.partyVotesPCT - a.partyVotesPCT
+    })
+}
 
-// function getLoyalty(allMembers) {
-//     let arrayLoyals = [];
-//     let tenPercent = (10 * allMembers.length) / 100;
-//     for (let i = 0; i < allMembers.length; i++) {
-//         if (i < tenPercent) {
-//             arrayLoyals.push(allMembers[i])
-//         } else if (arrayLoyals[arrayLoyals.length - 1].partyVotes == allMembers[i].missedVotes) {
-//             arrayLoyals.push(allMembers[i])
-//         } else {
-//             break;
-//         }
-//     }
-//     return arrayLoyals;
-// }
+const dataLoyalty = getLoyaltyData();
+console.log(dataLoyalty)
+
+
+function getLoyalty(allMembers) {
+    let arrayLoyals = [];
+    let tenPercent = (10 * allMembers.length) / 100;
+    for (let i = 0; i < allMembers.length; i++) {
+        if (i < tenPercent) {
+            arrayLoyals.push(allMembers[i])
+        } else if (arrayLoyals[arrayLoyals.length - 1].partyVotes == allMembers[i].missedVotes) {
+            arrayLoyals.push(allMembers[i])
+        } else {
+            break;
+        }
+    }
+    return arrayLoyals;
+}
+
+const mostLoyal = getLoyalty(dataLoyalty)
+const leastLoyal = getLoyalty(dataLoyalty.reverse())
+
+console.log( "most loyal: ",  mostLoyal)
+console.log(  "least loyal: ", leastLoyal)
+
+// SENATE PARTY LOYALTY LEAST/MOST LOYAL TABLES
+
+function engagementTableLoyalty(tableId, members) {
+    let table = document.getElementById(tableId);
+    if(table) {
+    for (let i = 0; i < members.length; i++) {
+
+        let name = members[i].fullName;
+        let partyVotes = members[i].partyVotes;
+        let partyVotesPCT = members[i].partyVotesPCT;
+        
+        let row = document.createElement('tr')
+        row.insertCell().innerHTML = name;
+        row.insertCell().innerHTML = partyVotes;
+        row.insertCell().innerHTML = partyVotesPCT;
+        table.append(row);
+    }
+}
+}
+engagementTableLoyalty("least-tableLoyalty", mostLoyal );
+engagementTableLoyalty("most-tableLoyalty", leastLoyal);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -209,23 +267,3 @@ engagementTable ("most-table", mostEngagedMembers);
 // //     console.log(partyVotes)
 // //     return partyVotes;    
 // // }
-
-// // SENATE PARTY LOYALTY LEAST/MOST LOYAL TABLES
-
-// function engagementTableLoyalty(tableId, members) {
-//     let table = document.getElementById(tableId);
-//     if(table) {
-//     for (let i = 0; i < members.length; i++) {
-
-//         let name = members[i].fullName;
-//         let partyVotes = members[i].partyVotes;
-//         let partyVotesPCT = members[i].partyVotesPCT;
-        
-//         let row = document.createElement('tr')
-//         row.insertCell().innerHTML = name;
-//         row.insertCell().innerHTML = partyVotes;
-//         row.insertCell().innerHTML = partyVotesPCT;
-//         table.append(row);
-//     }
-// }
-// }

@@ -116,6 +116,74 @@ function engagementTable(tableId, members) {
 }
 }
 
-
 engagementTable("least-table",leastEngagedMembers);
 engagementTable ("most-table", mostEngagedMembers);
+
+// LOYALTY TABLE
+
+// console.log("partyVotes: ", partyVotes)
+function getLoyaltyData() {
+    let arrayData = []
+
+    for (let i = 0; i < members.length; i++) {
+        if (members[i].middle_name == null) {
+            members[i].middle_name = "";
+        }
+        let fullName = members[i].first_name + " " + members[i].middle_name + " " + members[i].last_name;
+        let partyVotes = ((members[i].votes_with_party_pct / 100) * members[i].total_votes).toFixed()
+        let partyVotesPCT = members[i].votes_with_party_pct
+        arrayData.push({fullName, partyVotes, partyVotesPCT})
+    }
+    // console.log(arrayData)
+    
+    return arrayData.sort(function (a, b) {
+        return b.partyVotesPCT - a.partyVotesPCT
+    })
+}
+
+const dataLoyalty = getLoyaltyData();
+console.log(dataLoyalty)
+
+
+function getLoyalty(allMembers) {
+    let arrayLoyals = [];
+    let tenPercent = (10 * allMembers.length) / 100;
+    for (let i = 0; i < allMembers.length; i++) {
+        if (i < tenPercent) {
+            arrayLoyals.push(allMembers[i])
+        } else if (arrayLoyals[arrayLoyals.length - 1].partyVotes == allMembers[i].missedVotes) {
+            arrayLoyals.push(allMembers[i])
+        } else {
+            break;
+        }
+    }
+    return arrayLoyals;
+}
+
+const mostLoyal = getLoyalty(dataLoyalty)
+const leastLoyal = getLoyalty(dataLoyalty.reverse())
+
+console.log( "most loyal: ",  mostLoyal)
+console.log(  "least loyal: ", leastLoyal)
+
+
+function engagementTableLoyalty(tableId, members) {
+    let table = document.getElementById(tableId);
+    if(table) {
+    for (let i = 0; i < members.length; i++) {
+
+        let name = members[i].fullName;
+        let partyVotes = members[i].partyVotes;
+        let partyVotesPCT = members[i].partyVotesPCT;
+        
+        let row = document.createElement('tr')
+        row.insertCell().innerHTML = name;
+        row.insertCell().innerHTML = partyVotes;
+        row.insertCell().innerHTML = partyVotesPCT;
+        table.append(row);
+    }
+}
+}
+engagementTableLoyalty("least-tableLoyalty", leastLoyal);
+engagementTableLoyalty("most-tableLoyalty", mostLoyal);
+

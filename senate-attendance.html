@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="congress.css">
 </head>
 
-<body>
+<body onload="getNumberMembers();">
     <nav class=" header">
         <div>
             <a href="#">TGIF</a>
@@ -23,7 +23,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" href="#">Congress 113</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="page senate-data.html">Senate</a>
+                    <a class="dropdown-item" href="senate-starter-page.html">Senate</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="house-starter-page.html">House</a>
                 </div>
@@ -32,7 +32,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" href="#">Attendance</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="senate_house-attendance-starter-page.html">Senate</a>
+                    <a class="dropdown-item" href="senate-attendance.html">Senate</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="house-attendance.html">House</a>
                 </div>
@@ -41,9 +41,9 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" href="#">Party Loyalty</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="senate-party-loyalty-starter-page.html">Senate</a>
+                    <a class="dropdown-item" href="senate-party-loyalty.html">Senate</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="">House</a>
+                    <a class="dropdown-item" href="house-party-loyalty.html">House</a>
                 </div>
             </li>
         </ul>
@@ -54,10 +54,16 @@
     </header>
     <!--Table container-->
     <div>
-        <h2>Party Loyalty</h2>
-        <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively,
-            tend to be the most faithful in voting for their party's nominee for office and legislation that backs their
-            party's agenda. </p>
+        <h2>Attendance</h2>
+        <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house.
+            Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most
+            cases, debates continue even if a majority is not present.</p>
+
+        <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye"
+            or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters,
+            as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic
+            device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if
+            present) cast the tiebreaking vote.</p>
         <h2>Senate at a glance</h2>
         <table id="glance-table" class="table">
             <thead class="thead-dark">
@@ -90,27 +96,30 @@
                 </tr>
             </tbody>
         </table>
-        <h2>Least Loyal (Bottom 10% of Party)</h2>
-        <table class="table" id="least-tableLoyalty">
+        <h2>Least Engaged (Bottom 10% Attendance)</h2>
+        <table class="table" id="least-table">
             <thead class="thead-dark">
                 <tr>
                     <th>Name</th>
-                    <th>Number Party Votes</th>
-                    <th>% Party Votes</th>
+                    <th>Number of Missed Votes</th>
+                    <th>% Missed</th>
                 </tr>
             </thead>
         </table>
 
-        <h2>Most Loyal (Top 10% of Party)</h2>
-        <table class="table" id="most-tableLoyalty">
+        <h2>Most Engaged (Top 10% Attendance)</h2>
+        <table class="table" id="most-table" >
             <thead class="thead-dark">
                 <tr>
                     <th>Name</th>
-                    <th>Number Party Votes</th>
-                    <th>% Party Votes</th>
+                    <th>Number of Missed Votes</th>
+                    <th>% Missed</th>
                 </tr>
             </thead>
         </table>
+    </div>
+    <div class="footer">
+        <p>2019 TGIF All rights reserved</p>
     </div>
     <script src="scripts/pro-Congress-113-senate.js"></script>
     <script src="scripts/senateStatistics.js"></script>
