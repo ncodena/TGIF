@@ -1,3 +1,5 @@
+window.onscroll = function() {scrollFunction()};
+
 const key = "a8pl8KzuwKgro4HqqUgj2pZ00fsE1DmhRqBm1FPG"
 const currentPage = window.location.pathname.split("/").pop()
 const senateUrl = 'https://api.propublica.org/congress/v1/115/senate/members.json'
@@ -146,9 +148,9 @@ function loadingDisplay (){
     loaderRemoval.classList.remove("lds-spinner")
 }
 function readingButton() {
-    var dots = document.getElementById("dots");
-    var moreText = document.getElementById("more");
-    var btnText = document.getElementById("myBtn");
+    let dots = document.getElementById("dots");
+    let moreText = document.getElementById("more");
+    let btnText = document.getElementById("myBtn");
   
     if (dots.style.display === "none") {
       dots.style.display = "inline";
@@ -159,6 +161,14 @@ function readingButton() {
       btnText.innerHTML = "Read less"; 
       moreText.style.display = "inline";
     }
+}
+
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.getElementById("myHeader").style.fontSize = "30px";
+  } else {
+    document.getElementById("myHeader").style.fontSize = "90px";
+  }
 }
 
 function executeOnceDataIsFetched() {

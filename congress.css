@@ -4,6 +4,8 @@
 }
 
 /* HEADER AND NAVBAR FEATURES */
+
+
 .header {
   display: flex;
   margin: auto;
@@ -52,6 +54,7 @@ ul li {
   top: 0;
   width: 100%;
   justify-content: center;
+  font-family: 'Crimson Text'
 }
 
 .menu li {
@@ -66,6 +69,18 @@ ul li {
 .text {
   padding: 16px;
   margin-top: 30px;
+  font-family: 'Crimson Text';
+  -webkit-transition: background-color 2s ease-out;
+  -moz-transition: background-color 2s ease-out;
+  -o-transition: background-color 2s ease-out;
+  transition: background-color 1s ease-out;
+}
+
+#textToHover:hover{
+  background-color: aliceblue;
+  border-radius: 3px;
+  transition: all 400ms ease-out;
+  transition: background-color 3s ease-out;
 }
 
 /* LOADER FEATURES */
@@ -187,6 +202,7 @@ ul li {
   padding: 5px 10px;
   text-decoration: none;
   font-size: 17px;
+  font-family: 'Crimson Text';
 }
 
 /* BODY FEATURES */
@@ -194,6 +210,15 @@ ul li {
 .infoContainer {
   padding-top: 20px;
   text-align: justify;
+}
+h2{
+  display: flex;
+  justify-content: center;
+}
+
+h3{
+  display: flex;
+  justify-content: center;
 }
 
 .btn {
@@ -223,6 +248,7 @@ ul li {
   margin-top: 60px;
   text-align: justify;
   padding: 16px;
+  font-size: 110%;
 }
 
 #shadow:hover {
@@ -294,6 +320,11 @@ select {
   margin-left: 31%;
 }
 
+.cardHeader{
+  background-color: rgb(255, 255, 255);
+  transition: background-color 1.2s ease-out;
+}
+
 #headingOne:hover {
   background-color: rgba(98, 143, 180, 0.829);
   filter: alpha(opacity=30) opacity: 0.3;
@@ -301,7 +332,12 @@ select {
   color: white;
 }
 
-#readMore:hover {
+#myBtn{
+  font-size: 70%;
+  text-decoration: none;
+}
+
+#myBtn:hover {
   color: white;
 }
 
