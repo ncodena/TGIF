@@ -15,10 +15,10 @@ function getNumberMembers() {
 
     for (let i = 0; i < members.length; i++) {
         if (members[i].party.includes("R")) {
-            republicans = republicansVotes + members[i].votes_with_party_pct;
+            republicansVotes += members[i].votes_with_party_pct;
             republicans++
         } else if (members[i].party.includes("D")) {
-            democratsVotes = +members[i].votes_with_party_pct;
+            democratsVotes +=members[i].votes_with_party_pct;
             democrats++
         } else {
             independentsVotes += members[i].votes_with_party_pct;

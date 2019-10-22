@@ -1,4 +1,8 @@
-const members = data.results[0].members;
+const members = data.results[0].members.filter(
+    function(member){
+        return member.votes_with_party_pct >= 0 && member.missed_votes != null
+    }
+)
 
 // GLANCE TABLE
 
@@ -16,10 +20,11 @@ function getNumberMembers() {
 
     for (let i = 0; i < members.length; i++) {
         if (members[i].party.includes("R")) {
-            republicans = republicansVotes + members[i].votes_with_party_pct;
+            republicansVotes += members[i].votes_with_party_pct;
             republicans++
         } else if (members[i].party.includes("D")) {
-            democratsVotes = +members[i].votes_with_party_pct;
+            democratsVotes += members[i].votes_with_party_pct;
+
             democrats++
         } else {
             independentsVotes += members[i].votes_with_party_pct;
@@ -28,14 +33,24 @@ function getNumberMembers() {
         total++;
         totalVotes += members[i].votes_with_party_pct;
     }
+
+    // let average = 
+    // if(independentsVotes / independents == NaN){
+    //     return 0;
+    // } else { 
+    //     return (independentsVotes / independents)
+    // }
+    
    
     document.getElementById('republicans').innerHTML = republicans;
     document.getElementById('democrats').innerHTML = democrats;
     document.getElementById('independents').innerHTML = independents;
+    console.log(independents)
     document.getElementById('total').innerHTML = total;
     document.getElementById('republicansVotes').innerHTML = (republicansVotes / republicans).toFixed(2) + "%";
     document.getElementById('democratsVotes').innerHTML = (democratsVotes / democrats).toFixed(2) + "%";
-    document.getElementById('independentsVotes').innerHTML = (independentsVotes / independents).toFixed(2) + "%";
+    document.getElementById('independentsVotes').innerHTML = 0 + "%"
+    console.log(independentsVotes)
     document.getElementById('totalVotes').innerHTML = (totalVotes / total).toFixed(2) + "%";
     "votes_with_party_pct"
 }
@@ -54,9 +69,9 @@ function getData() {
         let fullName = members[i].first_name + " " + members[i].middle_name + " " + members[i].last_name;
         let missedVotes = members[i].missed_votes;
         let missedVotesPCT = members[i].missed_votes_pct;
-
-        array.push({fullName, missedVotes, missedVotesPCT})
-
+        // if(missedVotes != null){
+            array.push({fullName, missedVotes, missedVotesPCT})
+        // }
     }
     return array.sort(function (a, b) {
         return b.missedVotes - a.missedVotes
@@ -110,7 +125,7 @@ function engagementTable(tableId, members) {
         let row = document.createElement('tr')
         row.insertCell().innerHTML = name;
         row.insertCell().innerHTML = missedVotes;
-        row.insertCell().innerHTML = votes;
+        row.insertCell().innerHTML = votes + "%";
         table.append(row);
     }
 }
@@ -132,13 +147,14 @@ function getLoyaltyData() {
         let fullName = members[i].first_name + " " + members[i].middle_name + " " + members[i].last_name;
         let partyVotes = ((members[i].votes_with_party_pct / 100) * members[i].total_votes).toFixed()
         let partyVotesPCT = members[i].votes_with_party_pct
-        arrayData.push({fullName, partyVotes, partyVotesPCT})
+            arrayData.push({fullName, partyVotes, partyVotesPCT})
+        
     }
     // console.log(arrayData)
-    
     return arrayData.sort(function (a, b) {
         return b.partyVotesPCT - a.partyVotesPCT
     })
+
 }
 
 const dataLoyalty = getLoyaltyData();
@@ -179,7 +195,7 @@ function engagementTableLoyalty(tableId, members) {
         let row = document.createElement('tr')
         row.insertCell().innerHTML = name;
         row.insertCell().innerHTML = partyVotes;
-        row.insertCell().innerHTML = partyVotesPCT;
+        row.insertCell().innerHTML = partyVotesPCT + "%";
         table.append(row);
     }
 }

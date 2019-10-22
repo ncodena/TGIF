@@ -1,81 +1,311 @@
 * {
-    margin: 0px;
-    padding: 0;
+  margin: 0px;
+  padding: 0;
+}
+
+/* HEADER AND NAVBAR FEATURES */
+.header {
+  display: flex;
+  margin: auto;
+  background-image: url("capitol.png");
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  position: relative;
+}
+
+.email {
+  display: flex;
+  width: 12%;
+  margin-top: 5%;
+}
+
+.email a {
+  color: whitesmoke;
+  font-size: 146%;
+}
+
+.logo {
+  display: flex;
+  width: 20%;
+  height: 56%;
+  margin-left: 66%;
+  margin-top: 6%;
+}
+
+.logo>img {
+  width: 96%;
+  height: 125%;
+}
+
+
+ul li {
+  list-style-type: none;
+}
+
+.menu {
+  background-color: white;
+  opacity: 0.8;
+  display: flex;
+  /* overflow: hidden; */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  justify-content: center;
+}
+
+.menu li {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.text {
+  padding: 16px;
+  margin-top: 30px;
+}
+
+/* LOADER FEATURES */
+
+.hiddenContainer {
+  display: none;
+}
+
+.lds-spinner {
+  display: flex;
+  position: relative;
+  width: 93%;
+  height: 50%;
+  justify-content: center;
+}
+
+.lds-spinner div {
+  transform-origin: 32px 32px;
+  animation: lds-spinner 1.2s linear infinite;
+}
+
+.lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 29px;
+  width: 5px;
+  height: 14px;
+  border-radius: 20%;
+  background: rgb(34, 126, 231);
+}
+
+.lds-spinner div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -1.1s;
+}
+
+.lds-spinner div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -1s;
+}
+
+.lds-spinner div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.9s;
+}
+
+.lds-spinner div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.8s;
+}
+
+.lds-spinner div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.7s;
+}
+
+.lds-spinner div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.6s;
+}
+
+.lds-spinner div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.5s;
+}
+
+.lds-spinner div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.4s;
+}
+
+.lds-spinner div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.3s;
+}
+
+.lds-spinner div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.2s;
+}
+
+.lds-spinner div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.1s;
+}
+
+.lds-spinner div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+}
+
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* FOOTER FEATURES */
+.hiddenFooter{
+  display: none;
 }
 .footer {
-    position: unset;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 30%;
-    background-color:#F8F8FF;
-    color: black;
-    text-align: center;
- }
- .header{
-    margin: auto;
-    background-image: url("capitol.png");
-    background-size: cover;
-    background-position: center;
-    height: 60vh;
-    position: relative; 
+  overflow: hidden;
+  background-color: gainsboro;
+  border: lightgray ridge;
+  bottom: 0;
+  width: 100%;
 }
-.email{
-    display: flex; 
-    justify-content: flex-end;
-}
-.logo{
-    width: 100%;
-    height: 64%;
-}
-.logo > img {
-    width: 19%;
-    margin-left: 67%;
-    
-}
-.menu{
-    background-color: white;
-    opacity: 0.8;
-    display: flex; 
-    position: absolute; 
-    bottom: -16px;
-} 
-ul li {
-    list-style-type: none;
-}
-body{
-    background-color: #F0F8FF;
-}
-.infoContainer{
-    padding-top: 20px;
-    text-align: justify;
-}
-.btn{
-    color: black;
-}
-.text{
-    margin-right: 25px;
-    margin-left: 25px;
-    margin-top: 28px;
-    text-align: justify;
-}
-.filterContainers{
-    display: flex;
-    justify-content: space-evenly;
-}
-.filterCheckbox{
-    display: flex;
-    width: 34%;
-    border: solid;
-    padding-top: 2%;
-    margin: 3%;
-    padding-bottom: 2%;
-}
- .filterDropdown{
-     display: flex;
-     width: 25%;
- }
 
+.footer p {
+  display: block;
+  text-align: center;
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 17px;
+}
 
+/* BODY FEATURES */
 
+.infoContainer {
+  padding-top: 20px;
+  text-align: justify;
+}
 
+.btn {
+  color: black;
+}
+
+.introContainer {
+  display: flex;
+}
+
+.chamberText {
+  width: 60%;
+}
+
+.chamberLogo {
+  width: 30%;
+  margin-left: 8%;
+}
+
+.chamberLogo>img {
+  width: 80%;
+}
+
+.text {
+  margin-right: 102px;
+  margin-left: 100px;
+  margin-top: 60px;
+  text-align: justify;
+  padding: 16px;
+}
+
+#shadow:hover {
+  border-radius: 3px;
+  box-shadow: 0 0 0 2px rgba(12, 26, 63, 0.74);
+  transition: all 400ms ease-out;
+}
+
+#filter-checkbox:hover {
+  border-radius: 3px;
+  box-shadow: 0 0 0 2px rgba(145, 189, 230, 0.466);
+  transition: all 300ms ease-out;
+  background-color: #185183;
+  color: whitesmoke;
+  transition: background-color 3s ease-out;
+}
+
+.filterContainers {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.filterCheckbox {
+  display: inline;
+  width: 42%;
+  background-color: aliceblue;
+  margin: 3%;
+  padding: 3% 2% 2% 2%;
+  justify-content: space-evenly;
+  -webkit-transition: background-color 2s ease-out;
+  -moz-transition: background-color 2s ease-out;
+  -o-transition: background-color 2s ease-out;
+  transition: background-color 2s ease-out;
+}
+
+.partyFilterHeader {
+  display: flex;
+  justify-content: center;
+}
+
+.checkboxContainer {
+  display: inline;
+  margin-left: 10%;
+}
+
+.filterDropdown {
+  display: inline;
+  width: 42%;
+  background-color: aliceblue;
+  margin: 3%;
+  padding: 3% 2% 2% 2%;
+  justify-content: space-evenly;
+}
+
+select {
+  word-wrap: normal;
+  margin-bottom: 2%;
+}
+
+.filterHeader {
+  display: flex;
+  justify-content: center;
+}
+
+#states-dropdown {
+  display: flex;
+  width: 39%;
+  height: 48%;
+  margin-left: 31%;
+}
+
+#headingOne:hover {
+  background-color: rgba(98, 143, 180, 0.829);
+  filter: alpha(opacity=30) opacity: 0.3;
+  transition: 3s;
+  color: white;
+}
+
+#readMore:hover {
+  color: white;
+}
+
+.readMore {
+  display: flex;
+  justify-content: center;
+}

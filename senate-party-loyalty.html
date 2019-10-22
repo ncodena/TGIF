@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <nav class=" header">
+    <nav class="header">
         <div>
             <a href="#">TGIF</a>
         </div>
@@ -53,67 +53,82 @@
         </div>
     </header>
     <!--Table container-->
-    <div>
-        <h2>Party Loyalty</h2>
-        <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively,
-            tend to be the most faithful in voting for their party's nominee for office and legislation that backs their
-            party's agenda. </p>
-        <h2>Senate at a glance</h2>
-        <table id="glance-table" class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Party</th>
-                    <th>Number of Representatives</th>
-                    <th>% Voted with Party</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Republicans</td>
-                    <td id="republicans"></td>
-                    <td id="republicansVotes" ></td>
-                </tr>
-                <tr>
-                    <td>Democrats</td>
-                    <td id="democrats"></td>
-                    <td id="democratsVotes" ></td>
-                </tr>
-                <tr>
-                    <td>Independent</td>
-                    <td id="independents"></td>
-                    <td id="independentsVotes" ></td>
-                </tr>
-                <tr>
-                    <td>Total</td>
-                    <td id="total"></td>
-                    <td id="totalVotes"></td>
-                </tr>
-            </tbody>
-        </table>
-        <h2>Least Loyal (Bottom 10% of Party)</h2>
-        <table class="table" id="least-tableLoyalty">
-            <thead class="thead-dark">
+    <div class="text">
+        <div id="loader" class="lds-spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="hiddenContent" class="hiddenContainer">
+            <h2>PARTY LOYALTY</h2>
+            <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans
+                respectively,
+                tend to be the most faithful in voting for their party's nominee for office and legislation that backs
+                their
+                party's agenda. </p>
+            <h2>Senate at a glance</h2>
+            <table id="glance-table" class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Party</th>
+                        <th>Number of Representatives</th>
+                        <th>% Voted with Party</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Republicans</td>
+                        <td id="republicans"></td>
+                        <td id="republicansVotes"></td>
+                    </tr>
+                    <tr>
+                        <td>Democrats</td>
+                        <td id="democrats"></td>
+                        <td id="democratsVotes"></td>
+                    </tr>
+                    <tr>
+                        <td>Independent</td>
+                        <td id="independents"></td>
+                        <td id="independentsVotes"></td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td id="total"></td>
+                        <td id="totalVotes"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Least Loyal (Bottom 10% of Party)</h2>
+            <table class="table" id="least-tableLoyalty">
+                <!-- <thead class="thead-dark">
                 <tr>
                     <th>Name</th>
                     <th>Number Party Votes</th>
                     <th>% Party Votes</th>
                 </tr>
-            </thead>
-        </table>
+            </thead> -->
+            </table>
 
-        <h2>Most Loyal (Top 10% of Party)</h2>
-        <table class="table" id="most-tableLoyalty">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Name</th>
-                    <th>Number Party Votes</th>
-                    <th>% Party Votes</th>
-                </tr>
-            </thead>
-        </table>
+            <h2>Most Loyal (Top 10% of Party)</h2>
+            <table class="table" id="most-tableLoyalty"></table>
+        </div>
+    </div>
+    <div class="hiddenFooter" id="footer">
+        <div class="footer">
+            <p class="footerContainer">2019 TGIF | All rights reserved</p>
+        </div>
     </div>
     <script src="scripts/pro-Congress-113-senate.js"></script>
-    <script src="scripts/senateStatistics.js"></script>
+    <script src="scripts/ajax.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
