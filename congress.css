@@ -10,8 +10,9 @@
   display: flex;
   margin: auto;
   background-image: url("capitol.png");
-  background-size: cover;
+  background-size: initial;
   background-position: center;
+  background-attachment: fixed;
   height: 60vh;
   position: relative;
 }
