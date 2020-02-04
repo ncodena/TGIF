@@ -1,4 +1,4 @@
-window.onscroll = function() {scrollFunction()};
+
 
 const key = "a8pl8KzuwKgro4HqqUgj2pZ00fsE1DmhRqBm1FPG"
 const currentPage = window.location.pathname.split("/").pop()
@@ -67,7 +67,6 @@ function getFilteredMembers(selectedParty, selectedState) {
         if (selectedParty.includes(party) && (selectedState == state || selectedState == "all")){
             getFilteredMembers.push(members[i])
         }
-        
     }
     return getFilteredMembers;
 }
@@ -103,9 +102,15 @@ function getSelectedState(statesArray) {
 
 function creatTable(tableId, members) {
 
+    if (members.length == 0){
+
+        let toLoad = document.getElementById("messageHidden")
+        toLoad.classList.remove("hiddenMessage")
+
+    }else {
+
     let table = document.getElementById(tableId);
-    // console.log("me acabas de llamar")
-    // console.log(table, tableId)
+
     table.innerHTML = "";
 
     let th = document.createElement("tr")
@@ -138,6 +143,8 @@ function creatTable(tableId, members) {
         // console.log(row)
         table.appendChild(row);
     }
+        }
+
 }
 
 function loadingDisplay (){
@@ -163,13 +170,13 @@ function readingButton() {
     }
 }
 
-function scrollFunction() {
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    document.getElementById("myHeader").style.fontSize = "30px";
-  } else {
-    document.getElementById("myHeader").style.fontSize = "90px";
-  }
-}
+// function scrollFunction() {
+//   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+//     document.getElementById("myHeader").style.fontSize = "30px";
+//   } else {
+//     document.getElementById("myHeader").style.fontSize = "90px";
+//   }
+// }
 
 function executeOnceDataIsFetched() {
     getFilteredStates("states-dropdown", members)

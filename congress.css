@@ -50,12 +50,12 @@ ul li {
   background-color: white;
   opacity: 0.8;
   display: flex;
-  /* overflow: hidden; */
   position: fixed;
   top: 0;
   width: 100%;
   justify-content: center;
-  font-family: 'Crimson Text'
+  font-family: 'Crimson Text';
+  transition: 0.7s ease-out;
 }
 
 .menu li {
@@ -303,6 +303,10 @@ h3{
   padding: 3% 2% 2% 2%;
   justify-content: space-evenly;
 }
+/* #states-dropdown{
+  background: white;
+  opacity: 0.5;
+} */
 
 select {
   word-wrap: normal;
@@ -345,4 +349,30 @@ select {
 .readMore {
   display: flex;
   justify-content: center;
+}
+/* ERROR MESSAGE */
+.hiddenMessage{
+  display: none;
+}
+.errorContainer {
+  padding-top: 8%;
+  padding-bottom: 6%;
+}
+.fa{
+  display:flex;
+  justify-content: center;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font: normal normal normal normal normal normal normal 1 FontAwesome;
+  width: 100%;
+  height: 18%;
+  font-size: 127%
+}
+.lupaContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.lupaContainer>img{
+  width: 30%;
 }
